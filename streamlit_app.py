@@ -25,26 +25,26 @@ if 'quote' not in st.session_state:
 def choose_quote():
     st.session_state.quote = random.choice(rat_quotes)
 
-st.text(st.session_state.quote)
+st.code(st.session_state.quote)
 
-col1, col2 = st.columns(2)
+# col1, col2 = st.columns(2)
 
-with col1:
-    if st.button("Generate Quote"):
-        choose_quote()
+# with col1:
+if st.button("Generate Quote"):
+    choose_quote()
 
-with col2:
-    st.text("")  # Adding some space above the button
-    if st.button("Copy to Clipboard"):
-        st.markdown(f'<input type="text" value="{st.session_state.quote}" id="quote-input" style="position: absolute; left: -1000px;">', unsafe_allow_html=True)
-        st.markdown(
-            """
-            <script>
-                var copyText = document.getElementById("quote-input");
-                copyText.select();
-                copyText.setSelectionRange(0, 99999); /* For mobile devices */
-                document.execCommand("copy");
-            </script>
-            """,
-            unsafe_allow_html=True,
-        )
+# with col2:
+#     st.text("")  # Adding some space above the button
+#     if st.button("Copy to Clipboard"):
+#         st.markdown(f'<input type="text" value="{st.session_state.quote}" id="quote-input" style="position: absolute; left: -1000px;">', unsafe_allow_html=True)
+#         st.markdown(
+#             """
+#             <script>
+#                 var copyText = document.getElementById("quote-input");
+#                 copyText.select();
+#                 copyText.setSelectionRange(0, 99999); /* For mobile devices */
+#                 document.execCommand("copy");
+#             </script>
+#             """,
+#             unsafe_allow_html=True,
+#         )
