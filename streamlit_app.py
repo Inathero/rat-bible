@@ -29,7 +29,9 @@ def choose_quote():
 def copy_to_clipboard():
     pyperclip.copy(st.session_state.quote)
 
-st.text(st.session_state.quote)
+# st.text(st.session_state.quote)
+st_copy_to_clipboard(st.session_state.quote)
+
 col1, col2 = st.columns(2)
 
 with col1:
