@@ -1,6 +1,5 @@
 import streamlit as st
 import random
-import pyperclip
 
 # Header
 st.title('The Rat Bible')
@@ -26,12 +25,7 @@ if 'quote' not in st.session_state:
 def choose_quote():
     st.session_state.quote = random.choice(rat_quotes)
 
-def copy_to_clipboard():
-    pyperclip.copy(st.session_state.quote)
-
-# st.text(st.session_state.quote)
-st.markdown(st.session_state.quote)
-
+st.text(st.session_state.quote)
 col1, col2 = st.columns(2)
 
 with col1:
@@ -39,5 +33,9 @@ with col1:
         choose_quote()
 
 with col2:
-    if st.button("Copy to Clipboard"):
-        copy_to_clipboard()
+    st.text("")  # Adding some space above the button
+    st.button("Copy to Clipboard")
+    st.write(
+        f'<textarea id="quote-text" style="opacity:0;">{st.session_state.quote}</textarea><script>document.getElementById("quote-text").select();document.execCommand("copy");</script>',
+        unsafe_allow_html=True,
+    )
