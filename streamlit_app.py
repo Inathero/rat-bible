@@ -26,6 +26,7 @@ def choose_quote():
     st.session_state.quote = random.choice(rat_quotes)
 
 st.text(st.session_state.quote)
+
 col1, col2 = st.columns(2)
 
 with col1:
@@ -34,8 +35,16 @@ with col1:
 
 with col2:
     st.text("")  # Adding some space above the button
-    st.button("Copy to Clipboard")
-    st.write(
-        f'<textarea id="quote-text" style="opacity:0;">{st.session_state.quote}</textarea><script>document.getElementById("quote-text").select();document.execCommand("copy");</script>',
-        unsafe_allow_html=True,
-    )
+    if st.button("Copy to Clipboard"):
+        st.markdown(f'<input type="text" value="{st.session_state.quote}" id="quote-input" style="position: absolute; left: -1000px;">', unsafe_allow_html=True)
+        st.markdown(
+            """
+            <script>
+                var copyText = document.getElementById("quote-input");
+                copyText.select();
+                copyText.setSelectionRange(0, 99999); /* For mobile devices */
+                document.execCommand("copy");
+            </script>
+            """,
+            unsafe_allow_html=True,
+        )
