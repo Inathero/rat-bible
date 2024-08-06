@@ -1,7 +1,19 @@
 import streamlit as st
 import random
 import rat_quotes as rat
+import wide_mode
 
+def _max_width_(prcnt_width:int = 75):
+    max_width_str = f"max-width: {prcnt_width}%;"
+    st.markdown(f"""
+                <style>
+                .reportview-container .main .block-container{{{max_width_str}}}
+                </style>
+                """,
+                unsafe_allow_html=True,
+    )
+
+_max_width_(80)
 # Header
 st.title('The Rat Bible')
 
@@ -11,7 +23,7 @@ st.markdown("<div style='text-align: center;'><img src='https://my.minmatar.org/
 # Separator
 st.markdown("---")
 
-st.text("How to use: Copy the holy rat quote below by either clicking the clipboard icon to the right of the text box, or select all text and copy it.")
+st.info("How to use: Copy the holy rat quote below by either clicking the clipboard icon to the right of the text box, or select all text and copy it.")
 # Text and buttons
 
 if 'quote' not in st.session_state:
