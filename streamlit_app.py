@@ -1,19 +1,9 @@
 import streamlit as st
+from streamlit_extras.stylable_container import stylable_container
 import random
 import rat_quotes as rat
 import wide_mode
 
-def _max_width_(prcnt_width:int = 75):
-    max_width_str = f"max-width: {prcnt_width}%;"
-    st.markdown(f"""
-                <style>
-                .reportview-container .main .block-container{{{max_width_str}}}
-                </style>
-                """,
-                unsafe_allow_html=True,
-    )
-
-_max_width_(80)
 # Header
 st.title('The Rat Bible')
 
@@ -34,26 +24,17 @@ def choose_quote():
 
 choose_quote()
 
-st.code(st.session_state.quote)
+with stylable_container(
+    "codeblock",
+    """
+    code {
+        white-space: pre-wrap !important;
+    }
+    """,
+):
+    st.code(st.session_state.quote)
 
-# col1, col2 = st.columns(2)
 
 # with col1:
 if st.button("Generate Quote"):
     choose_quote()
-
-# with col2:
-#     st.text("")  # Adding some space above the button
-#     if st.button("Copy to Clipboard"):
-#         st.markdown(f'<input type="text" value="{st.session_state.quote}" id="quote-input" style="position: absolute; left: -1000px;">', unsafe_allow_html=True)
-#         st.markdown(
-#             """
-#             <script>
-#                 var copyText = document.getElementById("quote-input");
-#                 copyText.select();
-#                 copyText.setSelectionRange(0, 99999); /* For mobile devices */
-#                 document.execCommand("copy");
-#             </script>
-#             """,
-#             unsafe_allow_html=True,
-#         )
