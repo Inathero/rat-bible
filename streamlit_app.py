@@ -1,5 +1,6 @@
 import streamlit as st
 import random
+import rat_quotes as rat
 
 # Header
 st.title('The Rat Bible')
@@ -10,20 +11,16 @@ st.markdown("<div style='text-align: center;'><img src='https://my.minmatar.org/
 # Separator
 st.markdown("---")
 
+st.text("How to use: Copy the holy rat quote below by either clicking the clipboard icon to the right of the text box, or select all text and copy it.")
 # Text and buttons
-rat_quotes = [
-    "Squeak squeak!",
-    "Find the cheese.",
-    "Avoid the trap.",
-    "Scurrying through the night.",
-    "Long live the Rat King!"
-]
 
 if 'quote' not in st.session_state:
     st.session_state.quote = ""
 
 def choose_quote():
-    st.session_state.quote = random.choice(rat_quotes)
+    st.session_state.quote = random.choice(rat.rat_quotes)
+
+choose_quote()
 
 st.code(st.session_state.quote)
 
