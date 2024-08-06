@@ -27,7 +27,7 @@ choose_quote()
 with stylable_container(
     "codeblock",
     """
-    stCodeBlock {
+    code {
         white-space: pre-wrap !important;
     }
     """,
