@@ -25,9 +25,12 @@ def choose_quote():
 choose_quote()
 
 with stylable_container(
-    "codeblock",
+    "stCodeBlock",
     """
-    code {
+    stCodeBlock {
+        white-space: pre-wrap !important;
+    },
+    CodeBlock {
         white-space: pre-wrap !important;
     }
     """,
