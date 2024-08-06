@@ -1,10 +1,9 @@
-# 🎈 Blank app template
+# 🎈 The Ratini Holy Bible
 
-Rat Bible!
+This is the holy rat bible.
 
-A simple Streamlit app template for you to modify!
+For more information, please visit https://my.minmatar.org/
 
-[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://blank-app-template.streamlit.app/)
 
 ### How to run it on your own machine
 
